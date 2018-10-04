@@ -1,0 +1,2 @@
+10/03/2018 08:24:10 PM - LoginPage - INFO: Element not found with locator: user_email and  locatorType: id
+10/03/2018 08:24:13 PM - LoginPage - INFO: Element not found with locator: //span[@class='navbar-current-user'] and  locatorType: xpath
