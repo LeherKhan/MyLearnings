@@ -1,0 +1,143 @@
+Django Introduction:
+- A framework in Python for web development.
+-Free and Open Source
+-It provides clean,hassle-free and pragmatic design with less code.
+
+Benefits :
+1.Exceedingly Scalable.
+2.Reassuingly Secure.
+3.Rediculously Fast.
+4.Fully loaded.
+5.Incredibaly Versatile.
+
+
+Concepts covered in Tutorial:
+-Setting up Django.
+-Create Database.
+-Play around with URL's and Views.
+-Add Bootstrap and CSS.
+
+Pre-requisite for DJango:
+-Install Python with latest version.
+-Install IDE as per your preference.
+
+
+Steps to get started:
+1.Install a virtual environment[venv]
+         Command Prompt navigate to plugins installed i.e, PIP
+         $pip3 install virtualenv
+         
+         
+2.Create a venv:[Command Prompt]
+          $virtualenv -v python3 env
+    where 'env' is the name of the virtualenv created inside the folder.
+    
+3.Activate the Virtualenv :
+        $source env/bin/activate
+ All the tools and plugins will be installed inside virtaulenv not the machine.
+ 
+ Alternative to activate VirtualEnv:
+ -Install a plugin or a wrapper : VIRTUALENVWRAPPER
+       $pip install vortualenvwrapper-win
+       $mkvirtualenv env
+       $activate
+       
+       
+Create a Project:
+-Before starting with teh project there should always one main site and then the sub site.
+-To create a project : $django-admin startproject project_name
+      This consists of pre-loaded Files[init.py,settings.py,urls.py,wsgi.py,manage.py]
+-manage.py -Acts as a communicator between terminal and Django,such as migration,acessing application and so on.
+-__init__.py : It tells it is a python package and it is aempty file.
+               The __init__.py files are required to make Python treat the directories as containing packages;
+-setiings.py : Holds teh settings such as Apps.
+-urls.py :It contains all the url's of the application.
+-wsgi.py: It is used to deploy application on server.
+
+
+Lets get started :
+            Website[TestProjects]
+       -App1  [POLLS] 
+       -App2
+       -App3
+       
+Create an App inside Project Folder: $cd ProjectName
+                                     $python manage.py startapp POLLS
+-POLLS site are created with the following :
+        init.py -Same as master
+        admin.py:Allows to add Admin settings
+        apps.py:Configure Apps
+        models.py: Database Layout
+        tests.py:For testing
+        views.py : Display the content of Application
+        
+
+DJango has Version Control [GIT] only for the Models.py i.e,Database.
+To execute the POLL App : $python manage.py startserver POLLS
+-It amy require migrations of the app to be applied hence you can use admin IP ADRESS
+-Admin IP : 127.0.0.1:8000
+
+
+Create A Database:models.py
+POLLS  Application will have : 1.Question->Needs a TextBox
+                                           Publish date
+                                           Author
+                               2.Choice : Choice Text-> TextBox
+                                          Votes
+                                          Link to every Question
+      
+Once the models.py is modified we need to migrate i.e Any changes in database Schema 
+design It needs to be migrated in Base Website : TestProjects 
+        $python manage.py makemigrations POLLS
+        
+        
+        
+        
+Before this you need to include AppName in settings.py of TestProjects under 'INSTALLED APPS'      
+Once you again execute the command : $python manage.py migrate
+-'0001_initial.py' file is created  which is like GIT VCS .
+       
+Populating Databas:Representing Database
+-Go to Shell : $ python manage.py shell
+               >>import django
+               >>django setup()      # Allows the admin side
+               >>from POLLS.model import class_name
+               >>Classname.objects.all()   # Retreive the latest records
+               >>To add a record : q=Classname(var_name =value,var_name2=value)
+               >>q.save()  # To save the records
+               
+               
+Code :
+>>import django
+>>import django setup()
+>>from POLLS.models import Questions,Choices
+>>from django.utils import timezone    # To retreive the current date 
+
+>>Questions.objects.all()    # Retreives all the records []
+>>q=Questions(quest_text="name",pub_date=timezone.now())
+>>q.save()
+
+>>c=Questions.object.get(pk=1)   # Get the records
+>>c.choices_set.create(choice_text="  Bob ",votes=0)   #Relate the choice to questions
+>>c.save()
+
+>> $ python manage.py runsserver
+
+>> 127.0.0.1:8000
+ 
+
+
+
+
+
+       
+       
+    
+       
+       
+       
+ 
+ 
+    
+          
+          
